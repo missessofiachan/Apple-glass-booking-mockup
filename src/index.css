@@ -1,0 +1,169 @@
+:root {
+  /* Pastel Green Theme Palette */
+  --bg-base: hsl(145, 18%, 8%);
+  --bg-surface: hsl(145, 14%, 12%);
+  --bg-card: hsla(145, 14%, 15%, 0.6);
+  --bg-glass-border: hsla(145, 30%, 80%, 0.08);
+  --bg-glass-highlight: hsla(145, 30%, 80%, 0.03);
+  
+  --color-primary: hsl(145, 45%, 62%); /* Pastel Sage Green */
+  --color-primary-glow: hsla(145, 45%, 62%, 0.35);
+  
+  --color-accent-teal: hsl(168, 48%, 62%); /* Pastel Mint Teal */
+  --color-accent-teal-glow: hsla(168, 48%, 62%, 0.3);
+  
+  --color-accent-rose: hsl(18, 65%, 72%); /* Pastel Peach Coral */
+  
+  --text-primary: hsl(0, 0%, 98%);
+  --text-secondary: hsl(145, 10%, 78%);
+  --text-muted: hsl(145, 8%, 58%);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, hsla(145, 40%, 15%, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, hsla(168, 40%, 12%, 0.25) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(145, 14%, 18%);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(145, 14%, 25%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--bg-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-interactive {
+  transition: var(--transition-smooth);
+}
+.glass-interactive:hover {
+  border-color: hsla(145, 30%, 80%, 0.15);
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.5),
+    0 0 20px 0 var(--color-primary-glow);
+  transform: translateY(-4px);
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-surface) 25%, hsl(145, 14%, 15%) 50%, var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Custom glow text */
+.glow-text {
+  text-shadow: 0 0 20px var(--color-primary-glow);
+}
+
+.glow-teal-text {
+  text-shadow: 0 0 20px var(--color-accent-teal-glow);
+}
+
+/* Premium Button style */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), hsl(168, 48%, 62%));
+  color: hsl(145, 25%, 8%);
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px var(--color-primary-glow);
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 22px hsla(145, 45%, 62%, 0.5);
+  filter: brightness(1.1);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--bg-glass-highlight);
+  color: var(--text-primary);
+  border: 1px solid var(--bg-glass-border);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: hsla(145, 30%, 80%, 0.08);
+  border-color: hsla(145, 30%, 80%, 0.2);
+}
+
+/* Mesh Canvas Background */
+.mesh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+}
