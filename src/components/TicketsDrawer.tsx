@@ -59,7 +59,7 @@ export const TicketsDrawer: React.FC<TicketsDrawerProps> = ({ isOpen, onClose, t
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <TicketIcon size={20} style={{ color: 'var(--color-primary)' }} />
-            <h3 style={{ fontSize: '1.4rem', color: '#fff' }}>My Spatial Keys</h3>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff' }}>My Mockup Passes</h3>
             <span style={{
               background: 'var(--color-primary)',
               color: '#fff',

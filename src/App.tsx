@@ -368,7 +368,7 @@ export default function App() {
               <span>Switch to {userRole === 'attendee' ? 'Admin View' : 'Attendee View'}</span>
             </button>
 
-            {/* My Mockup Keys Drawer button */}
+            {/* My Mockup Passes Drawer button */}
             {userRole === 'attendee' && (
               <button 
                 onClick={() => setIsDrawerOpen(true)}
@@ -384,7 +384,7 @@ export default function App() {
                 }}
               >
                 <TicketIcon size={16} style={{ color: 'var(--color-primary)' }} />
-                <span>My Mockup Keys</span>
+                <span>My Mockup Passes</span>
                 {tickets.length > 0 && (
                   <span style={{
                     position: 'absolute',
@@ -478,7 +478,7 @@ export default function App() {
                     <BookOpen size={24} style={{ color: 'var(--color-accent-rose)' }} />
                   </div>
                   <div>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase' }}>Mock Keys Active</span>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase' }}>Mock Passes Active</span>
                     <span style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 700 }}>{tickets.length} issued</span>
                   </div>
                 </div>

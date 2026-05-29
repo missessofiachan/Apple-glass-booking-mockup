@@ -22,7 +22,7 @@ Designed with meticulous Apple-inspired glassmorphic aesthetics—frosted overla
 * **Live Calculations**: Selections dynamically update sub-totals, fee breakdowns, and final AUD total pricing in a structured glass card ledger.
 
 ### 🎫 Deluxe Pass Wallet & Tactile Check-In
-* **Frosted Wallet drawer**: Organizes active reservations inside a slide-out "My Spatial Keys" side-drawer.
+* **Frosted Wallet drawer**: Organizes active reservations inside a slide-out "My Mockup Passes" side-drawer.
 * **3D Perspective Flipping**: Click any digital pass to flip it smoothly using modern 3D CSS perspectives to reveal check-in credentials and authorization codes.
 * **Entrance Validation Hologram**: Authorizing check-in on the back of the pass dynamically triggers an animated, glowing neon **"VALIDATED / CHECKED IN"** stamp watermark overlaid across the front QR code matrix.
 * **High-Fidelity Text Exports**: Export individual confirmed tickets as printable `.txt` receipts containing validation stamps, weather forecasts, and itemized upgrades.
