@@ -167,3 +167,67 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.8;
   pointer-events: none;
 }
+
+/* Responsive Media Queries for iPhone / Android Screen Sizes */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column !important;
+    gap: 16px !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+  }
+  
+  header > div {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  header div {
+    text-align: center !important;
+  }
+  
+  /* Hero title adjustment */
+  section h2 {
+    font-size: 2rem !important;
+  }
+  
+  section p {
+    font-size: 0.95rem !important;
+  }
+  
+  /* Switch elements to wrap or adjust sizing */
+  .btn-primary, .btn-secondary {
+    padding: 10px 16px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .glass {
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section h2 {
+    font-size: 1.7rem !important;
+  }
+  
+  body {
+    padding: 10px 0 !important;
+  }
+  
+  main > div {
+    padding: 0 12px !important;
+  }
+  
+  .glass {
+    padding: 16px !important;
+    border-radius: var(--radius-md) !important;
+  }
+  
+  /* Tickets Drawer mobile adjustments */
+  .glass[style*="maxWidth: '420px'"] {
+    max-width: 100% !important;
+    width: 100vw !important;
+  }
+}
+

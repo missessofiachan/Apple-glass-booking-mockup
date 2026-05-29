@@ -108,7 +108,7 @@ export const TicketsDrawer: React.FC<TicketsDrawerProps> = ({ isOpen, onClose, t
               <span style={{ fontSize: '2.5rem', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.1))' }}>🎫</span>
               <h4 style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>No passes issued yet</h4>
               <p style={{ fontSize: '0.82rem', lineHeight: '1.4' }}>
-                Select an exclusive Apple Glass workshop or trial demo session to claim your entry pass.
+                Select an exclusive multicultural celebration event or community workshop to claim your entry pass.
               </p>
             </div>
           ) : (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Ticket } from '../types';
-import { RefreshCw, Landmark, Info, Trash2 } from 'lucide-react';
+import { RefreshCw, Landmark, Info, Trash2, Printer } from 'lucide-react';
+import { printMockPass } from '../utils/print';
 
 interface PassCardProps {
   ticket: Ticket;
@@ -299,7 +300,7 @@ export const PassCard: React.FC<PassCardProps> = ({ ticket, onCancel, onToggleCh
           </div>
 
           {/* Action Footer */}
-          <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+          <div style={{ display: 'flex', gap: '8px', marginTop: '20px' }}>
             <button
               onClick={(e) => {
                 e.stopPropagation(); // Stop flip trigger
@@ -309,17 +310,34 @@ export const PassCard: React.FC<PassCardProps> = ({ ticket, onCancel, onToggleCh
               }}
               className="btn-secondary"
               style={{
-                width: '100%',
+                flexGrow: 1,
                 justifyContent: 'center',
-                padding: '10px',
-                fontSize: '0.85rem',
+                padding: '10px 6px',
+                fontSize: '0.8rem',
                 borderColor: 'rgba(235, 87, 87, 0.4)',
                 color: 'hsl(350, 95%, 70%)',
                 background: 'rgba(235, 87, 87, 0.05)'
               }}
             >
-              <Trash2 size={14} />
-              Cancel Reservation
+              <Trash2 size={12} />
+              Cancel
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Stop flip trigger
+                printMockPass(ticket);
+              }}
+              className="btn-primary"
+              style={{
+                flexGrow: 1,
+                justifyContent: 'center',
+                padding: '10px 6px',
+                fontSize: '0.8rem'
+              }}
+            >
+              <Printer size={12} />
+              Print PDF
             </button>
             
             <div 
@@ -329,12 +347,12 @@ export const PassCard: React.FC<PassCardProps> = ({ ticket, onCancel, onToggleCh
                 justifyContent: 'center',
                 background: 'var(--bg-glass-highlight)',
                 borderRadius: 'var(--radius-sm)',
-                padding: '0 12px',
+                padding: '0 10px',
                 border: '1px solid var(--bg-glass-border)'
               }}
               title="Flip back to front"
             >
-              <RefreshCw size={14} style={{ color: 'var(--text-muted)' }} />
+              <RefreshCw size={12} style={{ color: 'var(--text-muted)' }} />
             </div>
           </div>
         </div>

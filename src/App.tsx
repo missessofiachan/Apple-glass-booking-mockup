@@ -4,8 +4,9 @@ import { APPLE_EVENTS } from './data/events';
 import { EventCard } from './components/EventCard';
 import { BookingModal } from './components/BookingModal';
 import { TicketsDrawer } from './components/TicketsDrawer';
-import { Search, Compass, Cpu, Ticket as TicketIcon, BookOpen, Flame, Calendar as CalendarIcon, RefreshCw, Download, ExternalLink, ShieldAlert, Plus, Trash2, Layers, Edit, CheckCircle } from 'lucide-react';
+import { Search, Compass, Cpu, Ticket as TicketIcon, BookOpen, Flame, Calendar as CalendarIcon, RefreshCw, ExternalLink, ShieldAlert, Plus, Trash2, Layers, Edit, CheckCircle, Printer } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { printMockPass } from './utils/print';
 
 export default function App() {
   const [events, setEvents] = useState<AppleEvent[]>(APPLE_EVENTS);
@@ -318,62 +319,6 @@ export default function App() {
     }
   };
 
-  // High-Fidelity pass ticket file downloader
-  const downloadMockPassFile = (ticket: Ticket) => {
-    const maskEmail = (email: string) => {
-      const parts = email.split('@');
-      if (parts.length !== 2) return '***@***.com';
-      const [name, domain] = parts;
-      return `${name.substring(0, 2)}***@${domain}`;
-    };    const addonsStr = ticket.selectedAddOns && ticket.selectedAddOns.length > 0
-      ? ticket.selectedAddOns.map(addon => `  * ${addon.icon} ${addon.name} (+$${addon.price})`).join('\n')
-      : '  * None';
-
-    const fileContent = `
-==================================================
-        MELBOURNE FESTIVAL MOCKUP ACCESS KEY
-==================================================
-RESERVATION CODE: ${ticket.id.toUpperCase()}
-STATUS:           ${ticket.isCheckedIn ? 'VALIDATED & CHECKED IN' : 'ISSUED & ACTIVE'}
-EVENT:            ${ticket.event.title}
-GREETING:         ${ticket.event.greeting}
-SUBTITLE:         ${ticket.event.subtitle}
-VENUE:            ${ticket.event.location}
-DATE:             ${ticket.event.date}
-TIME SLOT:        ${ticket.timeSlot}
-SEAT NUMBER:      DESK ${ticket.seatNumber}
-
-SELECTED UPGRADES:
-${addonsStr}
-
-ATTENDEE NAME:    ${ticket.userName}
-CREDENTIALS:      ${maskEmail(ticket.userEmail)}
-SECURED ON:       ${ticket.bookingDate}
-
---------------------------------------------------
-MELBOURNE WEATHER OUTLOOK:
-TEMP:             ${ticket.event.weather.temp} (${ticket.event.weather.status})
-OUTLOOK:          ${ticket.event.weather.description}
---------------------------------------------------
-ENTRY POLICY:
-Present the check-in QR code shown in your digital 
-Mockup Pass inside the slide drawer. Doors open 
-15 minutes before the scheduled slot.
---------------------------------------------------
-      Thank you for using our Mockup Platform!
-==================================================
-`;
-
-    const blob = new Blob([fileContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Mockup_Pass_${ticket.id.toUpperCase()}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <main style={{ position: 'relative', minHeight: '100vh', width: '100%', padding: '0 0 80px 0' }}>
@@ -758,7 +703,7 @@ Mockup Pass inside the slide drawer. Doors open
         {userRole === 'admin' && (
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '32px',
             alignItems: 'start'
           }}>
@@ -1163,7 +1108,7 @@ Mockup Pass inside the slide drawer. Doors open
             {/* Actions Panel */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }}>
               <button
-                onClick={() => downloadMockPassFile(newlyBookedTicket)}
+                onClick={() => printMockPass(newlyBookedTicket)}
                 className="btn-primary"
                 style={{
                   width: '100%',
@@ -1171,9 +1116,10 @@ Mockup Pass inside the slide drawer. Doors open
                   padding: '12px'
                 }}
               >
-                <Download size={16} />
-                Download Mockup Access Pass (.txt)
+                <Printer size={16} />
+                Print Mockup Access Pass (PDF)
               </button>
+
 
               <button
                 onClick={() => {
